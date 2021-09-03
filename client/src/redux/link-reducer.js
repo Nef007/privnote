@@ -4,12 +4,8 @@ import {deleteMessage, setMessage} from "./auth-reducer";
 const SET_LINK = 'SET_LINK'
 const SET_LINKS = 'SET_LINKS'
 const SET_LOADING = 'SET_LOADING'
-
 const SET_PROCESSING = 'SET_PROCESSING'
 const SET_CREATED = 'SET_CREATED'
-
-const SET_FECH = 'SET_FECH'
-const SET_ERROR = 'SET_ERROR'
 const SET_CHECK = 'SET_CHECK'
 const SET_CONFIRM = 'SET_CONFIRM'
 const CHANGE_TEXTARIA = 'CHANGE_TEXTARIA'

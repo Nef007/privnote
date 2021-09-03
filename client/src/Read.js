@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 
 
 export const Read = (props) => {
-    const { t, i18n } = useTranslation();
+    const { t} = useTranslation();
 
     const {
         linkId, getLink, loading, linkBoolPassword, link, messageLinkError, isTruePassword, deleteLink

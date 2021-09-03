@@ -11,7 +11,7 @@ const Created = (props) => {
        link
     } = props
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
    const myRefInputLink = React.createRef();
    const myRefPassword = React.createRef();

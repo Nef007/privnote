@@ -8,7 +8,7 @@ import {useTranslation} from "react-i18next";
 
  const CreateNote = ({createLinks}) => {
 
-     const { t, i18n } = useTranslation();
+     const { t } = useTranslation();
     const [activeHelp, setActiveHelp] = useState(false)
     const [activeOption, setActiveOption] = useState(false)
     const [state, setState] = useState({

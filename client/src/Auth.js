@@ -8,7 +8,7 @@ import {Message} from "./compoments/Message";
 const Auth = (props) => {
 
     const {
-        isAdmin, register, messageError, isEmptyAdmin, login, loading, message
+         login, loading, message
     } = props
 
 

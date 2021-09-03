@@ -13,12 +13,12 @@ import {Message} from "./compoments/Message";
 const Admin = (props) => {
 
     const {
-        getLinks, links, logout, reset, messageSave, deleteBD, changeTextAria, saveText,messageLinkError, message
+        getLinks, links, logout, reset, messageSave, deleteBD, changeTextAria, saveText, message
     } = props
 
     useEffect( () => {
         getLinks()
-    },[])
+    },[getLinks])
 
 
     const [passwordValid, setPasswordValid] = useState(true)

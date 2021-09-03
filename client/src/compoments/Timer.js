@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 
 
 export const Timer = (props) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const {
        sec
     } = props

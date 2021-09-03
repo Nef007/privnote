@@ -1,13 +1,9 @@
 import './App.scss';
-import React, {useState} from "react";
+import React from "react";
 import {Processing} from "./compoments/Processing";
-import {Admin} from "./Admin";
 import CreateNote from "./CreateNote";
 import {connect} from "react-redux";
 import Created from "./Created";
-
-
-import { useTranslation } from "react-i18next";
 
  const Main= (props) =>{
 

@@ -12,7 +12,6 @@ import Show from "./Show";
 import {Error404} from "./Error404";
 import {InfoAbout, InfoContact, InfoPrivacy, InfoSupport} from "./InfoPage";
 import { useCookies } from 'react-cookie';
-
 import { useTranslation } from "react-i18next";
 
 
@@ -128,8 +127,8 @@ function App({isAuth, initializedApp, initialized, check}) {
                     </div>
 
                     <div className="col span_2_of_6">
-                        <form method="get">
-                            <select onChange={changeLanguage} value={languageSelect} name="manual_locale" >
+
+                            <select onChange={changeLanguage}  value={languageSelect} name="manual_locale" id="dkfl" >
                                 <option value="de">Deutsch</option>
                                 <option value="en">English</option>
                                 <option value="es">Español</option>
@@ -138,7 +137,7 @@ function App({isAuth, initializedApp, initialized, check}) {
                                 <option value="pl">Polski</option>
                                 <option value="pt">Português</option>
                                 <option value="ro">Romana</option>
-                                <option value="ru" selected="selected">Русский</option>
+                                <option value="ru" >Русский</option>
                                 <option value="sv">Svenska</option>
                                 <option value="tr">Türkçe</option>
                                 <option value="uk">українська мова</option>
@@ -149,7 +148,6 @@ function App({isAuth, initializedApp, initialized, check}) {
                                 <option value="th">ไทย</option>
                                 <option value="default">(По умолчанию в браузере)</option>
                             </select>
-                        </form>
                         <a href="http://blog.privnote.com/post/125553077722/helps-us-translate-privnote">{t("footer.translite")}!</a><br/><br/>
                     </div>
                 </div>

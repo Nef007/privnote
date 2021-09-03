@@ -1,14 +1,12 @@
 import * as React from 'react';
-import {connect} from "react-redux";
-import {getLink} from "./redux/link-reducer";
 import {useTranslation} from "react-i18next";
 
 
 export const Confirm = (props) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const {
-        linkId, linkBoolPassword, setRead, setActiveConfirm, setConfirm
+        linkId, linkBoolPassword,  setConfirm
     } = props
 
     const onGetLink=()=>{

@@ -8,9 +8,9 @@ import moment from 'moment';
 import {useTranslation} from "react-i18next";
 
 export const DeleteNote = ({check}) => {
-    const { t, i18n } = useTranslation();
+    const { t,  } = useTranslation();
 
-    let time = moment(check.deleteNoteDate).fromNow().split(" ")
+
     moment.locale(`${t("language")}`)
     // time.pop()
     // time = time.join(" ")

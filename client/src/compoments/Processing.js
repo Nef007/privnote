@@ -2,8 +2,8 @@ import * as React from 'react';
 import {useTranslation} from "react-i18next";
 
 
-export const Processing = (props) => {
-    const { t, i18n } = useTranslation();
+export const Processing = () => {
+    const { t } = useTranslation();
     return (
         <div id="content">
             <div id="creating_note" >

@@ -1,5 +1,5 @@
 import './App.scss';
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {Confirm} from "./Confirm";
 import {checkLink, deleteLink, getLink, setConfirm} from "./redux/link-reducer";
@@ -7,18 +7,17 @@ import {useParams, withRouter} from 'react-router-dom'
 import {Read} from "./Read";
 import {compose} from "redux";
 import {DeleteNote} from "./DeleteNote";
-import {Fetch} from "./compoments/Fetch";
+
 import _ from "lodash";
-import {Error404} from "./Error404";
+
 import {useTranslation} from "react-i18next";
 
 const Show = (props) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const {
-        location, checkLink, check, messageLinkError
+        location, checkLink, check,
     } = props
 
-    const [activeConfirm, setActiveConfirm] = useState(true)
     const linkId = useParams().code
     const linkBoolPassword = !!location.hash.substr(1)
 
@@ -35,7 +34,7 @@ if( _.isEmpty(check)){
         <>
              { !check.isCheck && <DeleteNote check={check} {...props}/>}
             {  check.confirm && <Confirm linkId={linkId} linkBoolPassword={linkBoolPassword}
-                                       setActiveConfirm={setActiveConfirm}{...props} />}
+                                       {...props} />}
             {!check.confirm && check.isCheck && <Read linkId={linkId} linkBoolPassword={linkBoolPassword}{...props}/>}
 
 

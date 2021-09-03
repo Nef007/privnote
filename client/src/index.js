@@ -11,15 +11,14 @@ import { CookiesProvider } from 'react-cookie';
 import './i18n';
 
 ReactDOM.render(
-  <React.StrictMode>
+
       <Provider store={store}>
           <CookiesProvider>
           <Suspense fallback={<div>Loading...</div>}>
           <App />
           </Suspense>
           </CookiesProvider>
-      </Provider>
-  </React.StrictMode>,
+      </Provider>,
   document.getElementById('root')
 );
 
