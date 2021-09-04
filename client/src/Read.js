@@ -21,7 +21,7 @@ export const Read = (props) => {
             getLink(linkId, '')
         }
 
-    }, [])
+    }, [getLink, linkBoolPassword, linkId])
 
     const onActiveHelp=()=>{
         setActiveHelp(!activeHelp)
@@ -94,7 +94,7 @@ export const Read = (props) => {
                            href={link.link}>{link.link}</a>
                     </div> : ""
                     }
-                    <textarea onFocus={onFocusTextAria} ref={myRefInputLinkFinish} id="note_contents">{link.text}</textarea>
+                    <textarea onFocus={onFocusTextAria} ref={myRefInputLinkFinish} value={link.text} readOnly id="note_contents"/>
                     <div id="error_connection_destroy" className="error_block hidden">
                         Ошибка связи с сервером Privnote. Пожалуйста, проверьте ваше интернет-соединение и попробуйте
                         еще раз

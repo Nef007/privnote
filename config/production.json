@@ -2,7 +2,6 @@
   "port": 5000,
   "jwtSecret": "Dkfl",
   "mongoUri": "mongodb://localhost:27017/link",
-  "baseUrl": "http://localhost:3000",
   "email": "test1@yandex.ru",
-  "password": "1234"
+  "password": "123"
 }

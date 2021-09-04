@@ -12,7 +12,7 @@ export const Timer = (props) => {
 
     useEffect( () => {
         start(sec)
-    },[])
+    },[start])
 
     const [time, setTime] = useState("")
 

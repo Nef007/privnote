@@ -23,7 +23,7 @@ const Show = (props) => {
 
     useEffect( () => {
         checkLink(linkId)
-    },[])
+    },[checkLink, linkId])
 
 if( _.isEmpty(check)){
     return <h1>{t("load")}</h1>

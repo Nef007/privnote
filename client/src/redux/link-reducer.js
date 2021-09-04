@@ -114,11 +114,11 @@ export const setCheck = (data) => ({type: SET_CHECK, data})
 
 
 // создание ссылки устройств
-export const createLinks = (form) => async (dispatch) => {
+export const createLinks = (form, link) => async (dispatch) => {
     dispatch(deleteMessage());
     try {
         dispatch(setProcesing())
-        const data = await linkAPI.create(form)
+        const data = await linkAPI.create(form, link)
         dispatch(setLinkActions(data))
         dispatch(setCreated())
 

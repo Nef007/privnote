@@ -52,8 +52,8 @@ export const authAPI = {
 
 export const linkAPI = {
 
-    create(form) {
-        return  request('/api/link/create', 'POST', {form})
+    create(form, link) {
+        return  request('/api/link/create', 'POST', {form, link})
 
     },
     get() {

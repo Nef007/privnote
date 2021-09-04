@@ -34,7 +34,7 @@ function App({isAuth, initializedApp, initialized, check}) {
         }
 
 
-    }, [])
+    }, [cookies.language, i18n, initializedApp, language])
 
 
 
@@ -63,7 +63,7 @@ function App({isAuth, initializedApp, initialized, check}) {
                 <div id="header">
                     <h1>
                         <a href="/" title="Нажмите здесь, чтобы создать новую заметку">
-                            <img src={logo}
+                            <img src={logo} alt="Privnote"
                                 //  onError="this.onerror=null; this.src='/static-58c8928/style/legacy/privnote-logo.png'"
                             />
                             {/*<span>Privnote</span>*/}

@@ -55,7 +55,7 @@ const Created = (props) => {
 
                 <div className="section group">
                     <label>
-                        <input onFocus={onInputSelect} id="note_link_input" ref={myRefInputLink} autoFocus onClick={onInputSelect} value={link.link} type="text" readOnly=""/>
+                        <input onFocus={onInputSelect} id="note_link_input" ref={myRefInputLink} autoFocus onClick={onInputSelect} value={link.link} type="text" readOnly/>
                         {!link.hour ?
                             <span id="info_read_once" className="caption ">
                   {t("info_read_once")}</span>
@@ -93,7 +93,7 @@ const Created = (props) => {
                     <div className="section group">
                         <label>
                             {t("notePassword")}
-                            <input ref={myRefPassword} id="note_password_input" type={activeShowPassword ? "text" : "password" } value={link.password} readOnly=""/>
+                            <input ref={myRefPassword} id="note_password_input" type={activeShowPassword ? "text" : "password" } value={link.password} readOnly/>
                         </label>
                     </div>
 

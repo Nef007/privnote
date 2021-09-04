@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 import {connect} from "react-redux";
 import {initializedApp, isEmptyAdmin, login} from "./redux/auth-reducer";
 import {Message} from "./compoments/Message";

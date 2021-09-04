@@ -93,7 +93,7 @@ const Admin = (props) => {
                 </label>
                 <label>
                     Повторить пароль
-                    <input   onChange={onChangeForm} value={form.confirm} name="confirm" type="password"/>
+                    <input   onChange={onChangeForm} value={form.confirm} name="confirm" type="password" />
                     {!passwordValid &&
                     <span className="error" >Пароли не совпадают.</span>}
                     {/*{messageError &&  <span className="error" >{messageError}</span>}*/}
@@ -114,8 +114,8 @@ const Admin = (props) => {
 
 
                 return(
-                    <div className="link">
-                        <input type="text" value={link.link}/>
+                    <div key={link._id} className="link">
+                        <input type="text" value={link.link} readOnly/>
                         <div>Пароль: {link.password || "<пусто>"} </div>
                         <div>Таймер: {link.hour ?<> <Timer sec={link.hour}/><span>({moment(link.hour).format("HH:mm DD.MM.YYYY")})</span> </>:"-"}</div>
                         <div>Дата создания: {moment(link.date).format("HH:mm DD.MM.YYYY")}</div>

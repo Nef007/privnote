@@ -3,10 +3,12 @@ import {useState} from 'react';
 import {connect} from "react-redux";
 import {createLinks} from "./redux/link-reducer";
 import {useTranslation} from "react-i18next";
+import {compose} from "redux";
+import {withRouter} from "react-router-dom";
 
 
 
- const CreateNote = ({createLinks}) => {
+ const CreateNote = ({createLinks, location}) => {
 
      const { t } = useTranslation();
     const [activeHelp, setActiveHelp] = useState(false)
@@ -30,8 +32,6 @@ import {useTranslation} from "react-i18next";
         name: "",
 
     })
-
-
 
 
     const onActiveHelp = () => {
@@ -104,8 +104,8 @@ import {useTranslation} from "react-i18next";
         }
 
         if(form.text.length && state.passwordValid && state.emailValid ){
-           console.log(form)
-            createLinks(form)
+
+            createLinks(form, window.location.href)
 
         }
     }
@@ -206,7 +206,7 @@ import {useTranslation} from "react-i18next";
                             <label>
                                 {t("name")}
                                 <input onChange={onChangeForm} value={form.name} id="notify_ref" name="name"
-                                       type="text" maxlength="7"/>
+                                       type="text" maxLength="7"/>
                             </label>
                         </div>
 
@@ -261,4 +261,4 @@ let mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps,{createLinks}) (CreateNote)
+export default compose(connect(mapStateToProps,{createLinks}) , withRouter,)(CreateNote)

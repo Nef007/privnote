@@ -9,8 +9,9 @@ router.post('/create', async (req, res) => {
     try {
 
 
-        const baseUrl = config.get('baseUrl')
+       // const baseUrl = config.get('baseUrl')
         const {text, password, hour, confirm, email, name} = req.body.form
+        const baseUrl = req.body.link
 
         const code = shortid.generate()
         const code2 = shortid.generate()
@@ -37,9 +38,9 @@ router.post('/create', async (req, res) => {
 
         let link
         if (password) {
-            link = baseUrl + '/' + code
+            link = baseUrl  + code
         } else {
-            link = baseUrl + '/' + code + '#' + code2
+            link = baseUrl  + code + '#' + code2
         }
 
 
