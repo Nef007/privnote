@@ -8,7 +8,7 @@ const  app = express()
 app.use(express.json({extended: true}))
 
 app.use('/auth', require('./routes/auth.routes') )
-app.use('/t', require('./routes/redirect.routes') )
+//app.use('/t', require('./routes/redirect.routes') )
 app.use('/api/link', require('./routes/link.routes') )
 
 if (process.env.NODE_EVN === 'production'){

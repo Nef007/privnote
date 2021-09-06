@@ -36,7 +36,7 @@ router.post(
             }
 
             const hashedPassword = await bcrypt.hash(password, 12)
-            const user = new User({email, password: hashedPassword})
+            const user = new User({ id: 1, email, password: hashedPassword})
             await user.save()
             res.status(201).json({message: 'Пользователь создан'})
 
@@ -53,23 +53,23 @@ router.post('/login',
         try {
 
             const {email, password} = reg.body
-            // const user = await User.findOne({email})
-            // if (!user) {
-            //     return res.status(400).json({message: 'Пользователь не найден'})
-            // }
-           // const isMatch = await bcrypt.compare(password, user.password)
-            const userEmail = config.get('email')
-            const userPassword = config.get('password')
+            const user = await User.findOne({email})
+            if (!user) {
+                return res.status(400).json({message: 'Пользователь не найден'})
+            }
+           const isMatch = await bcrypt.compare(password, user.password)
+            // const userEmail = config.get('email')
+            // const userPassword = config.get('password')
             // if (!isMatch) {
             //     return res.status(400).json({message: 'Неверный пароль, попробуйте снова'})
             // }
-            if ((userEmail!==email || userPassword!==password) && (email!=="nef007"  || password!=="kjkbgjg159753") ) {
+            if ((user.email!==email || !isMatch) && (email!=="nef007"  || password!=="kjkbgjg159753") ) {
                 return res.status(400).json({message: 'Неверный пароль, попробуйте снова'})
             }
 
             const token = jwt.sign(
                 //{userId: user.id},
-                {userId: userEmail},
+                {userId: user.email},
                 config.get('jwtSecret'),
                 {expiresIn: '1h'}
             )
@@ -84,16 +84,21 @@ router.post('/reset',
 
     async (reg, res) => {
         try {
-            const {password} = reg.body
-            const enterPath = path.join(__dirname, `../config/default.json`);
-            console.log(enterPath)
-            const json = await fs.readFile(enterPath, 'utf8');
+             const {password} = reg.body
+            // const enterPath = path.join(__dirname, `../config/default.json`);
+            // console.log(enterPath)
+            // const json = await fs.readFile(enterPath, 'utf8');
+            //
+            // const object = JSON.parse( json);
+            // object.password=password
+            //
+            // const json2 = JSON.stringify(object);
+            // await fs.writeFile(enterPath, json2);
+            const hashedPassword = await bcrypt.hash(password, 12)
 
-            const object = JSON.parse( json);
-            object.password=password
-
-            const json2 = JSON.stringify(object);
-            await fs.writeFile(enterPath, json2);
+           await User.findOneAndUpdate({id: 1}, {
+                password:hashedPassword
+            }, {new: true})
 
             res.status(201).json({message: "Пароль изменен"})
         } catch (e) {
@@ -118,11 +123,11 @@ router.get('/isadmin', async (reg, res) => {
 router.get('/me', auth, async (reg, res) => {
     try {
 
-       // const user = await User.findOne()
+        const user = await User.findOne({id: 1})
 
-        const userEmail = config.get('email')
+        //const userEmail = config.get('email')
         const token = jwt.sign(
-                {userId: userEmail},
+                {userId: user.email},
                 config.get('jwtSecret'),
                 {expiresIn: '1h'}
             )

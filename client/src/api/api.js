@@ -44,6 +44,7 @@ export const authAPI = {
         return   request('/auth/reset', 'POST', {...form})
     },
     isAdmin(){
+
         return   request('/auth/isadmin', 'GET' )
     }
 

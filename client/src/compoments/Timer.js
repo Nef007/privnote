@@ -11,14 +11,16 @@ export const Timer = (props) => {
     } = props
 
     useEffect( () => {
-        start(sec)
-    },[start])
+        timer(sec)
+    },[timer])
+
+    useEffect( () => {
+        timer(sec)
+    },[timer])
 
     const [time, setTime] = useState("")
 
-    timer(sec)
-
-    function start (endTime) {
+    function timer (endTime) {
         let now = new Date().getTime();
         let diff = endTime - now;
         if (diff > 0) {
@@ -35,43 +37,13 @@ export const Timer = (props) => {
                 setTime(minutes + `${t("min_and")}` + seconds + `${t("ces")}`);
             }
 
-
-            // minutes = minutes < 10 ? `0${minutes}` : minutes;
-            // seconds = seconds < 10 ? `0${seconds}` : seconds;
-
         } else {
-            setTime("0")
+            return("0")
         }
     }
 
-    function timer(endTime) {
-        var myTimer = setInterval(function  () {
-            let now = new Date().getTime();
-            let diff = endTime - now;
-            if (diff > 0) {
-                let day = Math.floor(diff / (60 * 60) / 1000 / 24);
-                let hour = Math.floor(diff / (60 * 60) / 1000);
-                let minutes = Math.floor(diff % (1000 * 60 * 60) / (1000 * 60));
-                let seconds = Math.floor(diff % (1000 * 60) / 1000);
 
-                if (day) {
-                    setTime(day + `${t("day")}`);
-                } else if (hour) {
-                    setTime(hour + `${t("hour")}` + minutes + `${t("min")}`);
-                } else {
-                    setTime(minutes + `${t("min_and")}` + seconds + `${t("ces")}`);
-                }
-
-
-                // minutes = minutes < 10 ? `0${minutes}` : minutes;
-                // seconds = seconds < 10 ? `0${seconds}` : seconds;
-
-            } else {
-                clearInterval(myTimer);
-                setTime("0")
-            }
-        }, 1000);
-    }
+    setInterval(  ()=>timer(sec), 1000);
 
 
 

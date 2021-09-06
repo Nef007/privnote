@@ -105,8 +105,8 @@ const Admin = (props) => {
             </div>}
             <div>
                 <span> Все({links.length}) </span>
-                <span> Активные({countActive.length}) </span>
-                <span> Удаленные({links.length-countActive.length}) </span>
+                <span> Активные({countActive.length || "0"}) </span>
+                <span> Удаленные({links.length-countActive.length || "0"}) </span>
 
             </div>
 
@@ -118,7 +118,7 @@ const Admin = (props) => {
                         <input type="text" value={link.link} readOnly/>
                         <div>Пароль: {link.password || "<пусто>"} </div>
                         <div>Таймер: {link.hour ?<> <Timer sec={link.hour}/><span>({moment(link.hour).format("HH:mm DD.MM.YYYY")})</span> </>:"-"}</div>
-                        <div>Дата создания: {moment(link.date).format("HH:mm DD.MM.YYYY")}</div>
+                        <div>Дата создания: {moment(Number(link.date)).format("HH:mm DD.MM.YYYY")}</div>
                        <div>Удалить после прочтения: {link.deletehour? "нет": "да"}</div>
                         <div>Статус: <span className={link.status==="Активный" ?"green" : "red"}>{link.status}</span> </div>
                         {link.email && <div>Email: {link.email } </div> }

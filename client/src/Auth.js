@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { useState} from 'react';
+import {useEffect, useState} from 'react';
 import {connect} from "react-redux";
-import {initializedApp, isEmptyAdmin, login} from "./redux/auth-reducer";
+import {initializedApp, isEmptyAdmin, login, register} from "./redux/auth-reducer";
 import {Message} from "./compoments/Message";
 
 
 const Auth = (props) => {
 
     const {
-         login, loading, message
+         login, loading, message, isAdmin, register, isEmptyAdmin
     } = props
 
 
@@ -17,10 +17,9 @@ const Auth = (props) => {
         password: ""
     })
 
-    // useEffect( () => {
-    //
-    //     isEmptyAdmin()
-    // },[])
+    useEffect( () => {
+        isEmptyAdmin()
+    },[])
 
 
     function onChangeForm(e) {
@@ -29,9 +28,9 @@ const Auth = (props) => {
     }
 
 
-// const onRegister=()=>{
-//     register(formAuth)
-// }
+const onRegister=()=>{
+    register(formAuth)
+}
 
 const onLogin=()=>{
     login(formAuth)
@@ -42,7 +41,7 @@ if(loading){
 }
     return (
         <div className="admin">
-        {/*{true ?*/}
+        {isAdmin ?
                 <div>
                     <h2 className="center">Авторизация</h2>
                     <Message message={message} />
@@ -57,23 +56,21 @@ if(loading){
                     <button onClick={onLogin}  className="primary_button center">Войти</button>
 
             </div>
-            {/*:*/}
-            {/*    <div>*/}
-            {/*        <h2 className="center">Регистрация</h2>*/}
-            {/*        {messageError && <div id="error_note_is_empty" className="error_block ">*/}
-            {/*            {messageError}*/}
-            {/*        </div>}*/}
-            {/*        <label>*/}
-            {/*            Логин*/}
-            {/*            <input onChange={onChangeForm} value={formAuth.login} name="email" type="text"/>*/}
-            {/*        </label>*/}
-            {/*        <label>*/}
-            {/*            Пароль*/}
-            {/*            <input onChange={onChangeForm} value={formAuth.password} name="password" type="password"/>*/}
-            {/*        </label>*/}
-            {/*        <button onClick={onRegister} className="primary_button center">Регистрация</button>*/}
+            :
+                <div>
+                    <h2 className="center">Регистрация</h2>
+                    <Message message={message} />
+                    <label>
+                        Логин
+                        <input onChange={onChangeForm} value={formAuth.login} name="email" type="text"/>
+                    </label>
+                    <label>
+                        Пароль
+                        <input onChange={onChangeForm} value={formAuth.password} name="password" type="password"/>
+                    </label>
+                    <button onClick={onRegister} className="primary_button center">Регистрация</button>
 
-            {/*</div>}*/}
+            </div>}
         </div>
 
 
@@ -90,4 +87,4 @@ let mapStateToProps = (state) => {
         messageError: state.authState.messageError
     }
 }
-export default connect(mapStateToProps, { isEmptyAdmin, login, initializedApp})(Auth)
+export default connect(mapStateToProps, {register, isEmptyAdmin, login, initializedApp})(Auth)

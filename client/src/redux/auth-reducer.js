@@ -117,22 +117,22 @@ export const auth = () => async (dispatch) => {
 
 }
 
-//
-// export const register = (form) => async (dispatch) => {
-//     dispatch(setErrors(''))
-//     try {
-//         dispatch(setLoading(true))
-//
-//         const data = await authAPI.register(form)
-//         dispatch(setLoading(false))
-//         dispatch(setIsAdmin(true))
-//
-//     } catch (e) {
-//         dispatch(setLoading(false))
-//         dispatch(setErrors(e.message))
-//     }
-//
-// }
+
+export const register = (form) => async (dispatch) => {
+    dispatch(deleteMessage());
+    try {
+        dispatch(setLoading(true))
+
+        const data = await authAPI.register(form)
+        dispatch(setLoading(false))
+        dispatch(setIsAdmin(true))
+
+    } catch (e) {
+        dispatch(setLoading(false))
+        dispatch(setMessage(e.message, 'error'));
+    }
+
+}
 export const reset = (form) => async (dispatch) => {
     dispatch(deleteMessage());
     try {

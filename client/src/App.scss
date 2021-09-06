@@ -624,6 +624,65 @@ label.checkbox {
   text-decoration: underline;
 }
 
+/* -- Cookie consent ---------------- */
+.cookie-modal {
+  background: #000000;
+  color: white;
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 1.2em;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  right: 0px;
+  text-align: center;
+}
+
+.cookie-modal .cookie-link{
+  padding: .2em;
+  color: white;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.cookie-span{
+  padding: 0px;
+}
+
+.cookie-modal .cookie-link:hover{
+  opacity: 1;
+}
+
+.cookie-modal span {
+  padding: 10px;
+}
+
+.cookie-button {
+  background-color: #960000;
+  border: 1px solid #960000;
+  display:inline-block;
+  font-weight: 700;
+  padding: .7em 2.2em;
+  font-size: .9em;
+  text-align: center;
+  white-space: nowrap;
+  margin: .3rem .3rem .3rem 1rem;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+}
+
+.cookie-button a:hover{
+  background: #c12222;
+  color: #e62576;
+}
+
+@media print {
+  .cookie-modal {
+    display: none;
+  }
+}
+
 
 
 
